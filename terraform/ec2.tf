@@ -7,9 +7,9 @@ resource "aws_instance" "ec2" {
 #!/bin/bash 
 sudo su
 yum update -y
-yum install httpd -y
-systemctl start httpd
-systemctl enable httpd      
+yum install nginx -y
+systemctl start nginx
+systemctl enable nginx      
 EOF 
   tags = {
     Name = "web_instance"
