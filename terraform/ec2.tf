@@ -20,7 +20,7 @@ EOF
 
 resource "aws_security_group" "ec2" {
   name        = "web-instance-security-group"
-  vpc_id      = aws_vpc.main.id
+  vpc_id      = data.aws_vpc.default.id
 
   ingress {
     protocol    = "tcp"
@@ -48,4 +48,7 @@ resource "aws_security_group" "ec2" {
     to_port     = 0
     cidr_blocks = ["0.0.0.0/0"]
   }
+}
+data "aws_vpc" "default"{
+  default = true
 }
