@@ -1,5 +1,5 @@
 module "ec2"{
-    source = "./ec3"
+    source = "./ec2"
     role = var.role
     region = var.region
     key = var.key
