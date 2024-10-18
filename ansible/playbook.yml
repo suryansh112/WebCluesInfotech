@@ -3,18 +3,18 @@
     tasks:
     - name: Installing PM2
       shell: |
-            cd /root/simple-node-app
+            cd /home/ec2-user/simple-node-app
             npm install -g pm2
       register: result
     - name: Start Application
       shell: |
-            cd /root/simple-node-app
+            cd /home/ec2-user/simple-node-app
             npm install express
             pm2 stop app
             pm2 start app.js
       register: result
     - name: Status Application
       shell: |
-            cd /root/simple-node-app
+            cd /home/ec2-user/simple-node-app
             pm2 status
       register: result
