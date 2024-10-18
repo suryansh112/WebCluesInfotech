@@ -1,5 +1,6 @@
 ---
   - hosts: web_instance
+    gather_facts: false
     vars:
       ansible_pipelining: true
     tasks:
