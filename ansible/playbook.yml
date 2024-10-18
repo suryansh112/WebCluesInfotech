@@ -8,15 +8,17 @@
       shell: |
             cd /home/ec2-user/simple-node-app
             npm install express
-      register: result
+      register: install_result
     - name: Start Application
       shell: |
             cd /home/ec2-user/simple-node-app
             pm2 stop app
             pm2 start app.js
-      register: result
+      register: start_result
     - name: Status Application
       shell: |
             cd /home/ec2-user/simple-node-app
             pm2 status
-      register: result
+      register: status_result
+    - name: Status Output
+      debug: var=status_result.stdout_lines
