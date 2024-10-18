@@ -5,7 +5,7 @@ module "ec2"{
     key = var.key
     ami = var.ami
     type = var.type
-    ec2_security_group = module.sg.sg_name
+    ec2_security_group = module.sg_group.sg_name
 }
 module "ansible"{
     source = "./ansible"
@@ -14,9 +14,9 @@ module "ansible"{
     key = var.key
     ami = var.ami
     type = var.type
-    ec2_security_group = module.sg.sg_name
+    ec2_security_group = module.sg_group.sg_name
 }
-module "sg"{
+module "sg_group"{
     source = "./sg"
     sg_name = "web-instance-security-group"
 }
