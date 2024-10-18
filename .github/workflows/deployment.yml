@@ -20,6 +20,6 @@ jobs:
         role-session-name: GitHub_to_AWS_via_FederatedOIDC
         aws-region: us-east-1
     - name: Running Ansible Playbook
-      uses: actions/ansible-cli-action@latest
+      uses: RvuvuzelaM/ansible-cli-github-action@1
       with:
         command: "ansible-playbook ./ansible/playbook.yml -i  inventory.yml"
