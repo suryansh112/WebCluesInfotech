@@ -1,11 +1,7 @@
 ---
   - hosts: web_instance
+    become: true
     tasks:
-    - name: Install node
-      shell: |
-            cd /root/simple-node-app
-            yum install nodejs -y
-      register: result
     - name: Installing PM2
       shell: |
             cd /root/simple-node-app

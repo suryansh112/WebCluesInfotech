@@ -22,4 +22,4 @@ jobs:
     - name: Running Ansible Playbook
       uses: RvuvuzelaM/ansible-cli-github-action@1
       with:
-        command: "ansible-playbook ./ansible/playbook.yml -i  inventory.yml"
+        command: "ansible-playbook ./ansible/playbook.yml -i ./ansible/inventory.yml -e 'key=${{ secrets.key }}'"
