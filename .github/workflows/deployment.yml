@@ -9,7 +9,6 @@ permissions:
   contents: read
 jobs:
   Deployment:
-    if: inputs.command == 'apply'
     runs-on: ubuntu-latest
     steps:
     - name: Clone Repo
