@@ -19,7 +19,12 @@ jobs:
         role-to-assume: ${{secrets.ROLE_NAME}} 
         role-session-name: GitHub_to_AWS_via_FederatedOIDC
         aws-region: us-east-1
+    - name: Set up SSH key
+      run: |
+          echo "${{ secrets.KEY }}" > ${GITHUB_WORKSPACE}/key.pem
+          chmod 600 ${GITHUB_WORKSPACE}/key.pem
+
     - name: Running Ansible Playbook
       uses: RvuvuzelaM/ansible-cli-github-action@1
       with:
-        command: "ansible-playbook ./ansible/playbook.yml -vvv -i ./ansible/inventory.yml -e 'key=${{ secrets.KEY }}'"
+        command: "ansible-playbook ./ansible/playbook.yml -vvv -i ./ansible/inventory.yml -e 'key=${GITHUB_WORKSPACE}/key.pem'"
