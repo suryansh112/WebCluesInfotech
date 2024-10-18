@@ -1,2 +1,3 @@
 [web_instance]
-3.92.209.49
+3.92.209.49 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+
