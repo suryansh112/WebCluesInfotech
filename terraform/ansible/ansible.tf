@@ -2,7 +2,7 @@ resource "aws_instance" "ansible" {
   ami                  = var.ami
   instance_type        = var.type
   key_name             = var.key
-  security_groups      = [aws_security_group.ec2.name]
+  security_groups      = [var.ec2_security_group]
   user_data            = <<-EOF
 #!/bin/bash 
 sudo su
@@ -14,6 +14,6 @@ EOF
   tags = {
     Name = "ansible_instance"
   }
-  depends_on = [ aws_security_group.ec2 ]
+  depends_on = [ var.ec2_security_group ]
 
 }

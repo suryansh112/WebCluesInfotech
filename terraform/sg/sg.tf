@@ -1,5 +1,5 @@
 resource "aws_security_group" "ec2" {
-  name        = "web-instance-security-group"
+  name        = var.sg_name
   vpc_id      = data.aws_vpc.default.id
 
   ingress {
