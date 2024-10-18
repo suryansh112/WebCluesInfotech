@@ -3,10 +3,14 @@
     vars:
       ansible_pipelining: true
     tasks:
-    - name: Start Application
+    - name: NPM Install
       shell: |
             cd /home/ec2-user/simple-node-app
             npm install express
+      register: result
+    - name: Start Application
+      shell: |
+            cd /home/ec2-user/simple-node-app
             pm2 stop app
             pm2 start app.js
       register: result
