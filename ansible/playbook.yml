@@ -1,6 +1,5 @@
 ---
   - hosts: web_instance
-    become: true
     tasks:
     - name: Installing PM2
       shell: |
@@ -13,4 +12,9 @@
             npm install express
             pm2 stop app
             pm2 start app.js
+      register: result
+    - name: Status Application
+      shell: |
+            cd /root/simple-node-app
+            pm2 status
       register: result
