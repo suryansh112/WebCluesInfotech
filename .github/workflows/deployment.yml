@@ -30,12 +30,12 @@ jobs:
            docker build -t simple-node-app .
            docker tag simple-node-app:latest suryansh1234/my-repo:simple-node-app
            docker push suryansh1234/my-repo:simple-node-app
-    # - name: Set up SSH key
-    #   run: |
-    #       echo "${{ secrets.KEY }}" > key.pem
-    #       chmod 600 key.pem
+    - name: Set up SSH key
+      run: |
+          echo "${{ secrets.KEY }}" > key.pem
+          chmod 600 key.pem
 
-    # - name: Running Ansible Playbook
-    #   uses: RvuvuzelaM/ansible-cli-github-action@1
-    #   with:
-    #     command: "ansible-playbook ./ansible/playbook.yml -i ./ansible/inventory.yml -e 'ansible_ssh_private_key_file=key.pem'"
+    - name: Running Ansible Playbook
+      uses: RvuvuzelaM/ansible-cli-github-action@1
+      with:
+        command: "ansible-playbook ./ansible/playbook.yml -i ./ansible/inventory.yml -e 'ansible_ssh_private_key_file=key.pem'"

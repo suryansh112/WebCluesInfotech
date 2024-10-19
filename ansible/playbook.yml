@@ -4,21 +4,25 @@
     vars:
       ansible_pipelining: true
     tasks:
-    - name: NPM Install
+    - name: Pulling Image from Docker Hub 
       shell: |
-            cd /home/ec2-user/simple-node-app
-            npm install express
-      register: install_result
-    - name: Start Application
-      shell: |
-            cd /home/ec2-user/simple-node-app
-            pm2 stop app
-            pm2 start app.js
-      register: start_result
-    - name: Status Application
-      shell: |
-            cd /home/ec2-user/simple-node-app
-            pm2 status
-      register: status_result
-    - name: Status Output
-      debug: var=status_result.stdout_lines
+            docker pull suryansh1234/my-repo:simple-node-app
+            docker run -p 3000:3000 -d simple-node-app
+    # - name: NPM Install
+    #   shell: |
+    #         cd /home/ec2-user/simple-node-app
+    #         npm install express
+    #   register: install_result
+    # - name: Start Application
+    #   shell: |
+    #         cd /home/ec2-user/simple-node-app
+    #         pm2 stop app
+    #         pm2 start app.js
+    #   register: start_result
+    # - name: Status Application
+    #   shell: |
+    #         cd /home/ec2-user/simple-node-app
+    #         pm2 status
+    #   register: status_result
+    # - name: Status Output
+    #   debug: var=status_result.stdout_lines
