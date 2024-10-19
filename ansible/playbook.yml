@@ -7,22 +7,9 @@
     - name: Pulling Image from Docker Hub 
       shell: |
             docker pull suryansh1234/my-repo:simple-node-app
+    - name: Start Application
+      shell: |
             docker run --name node-app -p 3000:3000 -d suryansh1234/my-repo:simple-node-app
-    # - name: NPM Install
-    #   shell: |
-    #         cd /home/ec2-user/simple-node-app
-    #         npm install express
-    #   register: install_result
-    # - name: Start Application
-    #   shell: |
-    #         cd /home/ec2-user/simple-node-app
-    #         pm2 stop app
-    #         pm2 start app.js
-    #   register: start_result
-    # - name: Status Application
-    #   shell: |
-    #         cd /home/ec2-user/simple-node-app
-    #         pm2 status
-    #   register: status_result
-    # - name: Status Output
-    #   debug: var=status_result.stdout_lines
+      register: result
+    - name: Status Output
+      debug: var=result.stdout_lines

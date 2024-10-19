@@ -9,7 +9,10 @@ sudo su
 yum update -y
 yum install docker -y
 systemctl start docker
-systemctl enable docker      
+systemctl enable docker
+yum install nginx -y
+systemctl start nginx
+systemctl enable nginx       
 EOF 
   tags = {
     Name = "web_instance"
