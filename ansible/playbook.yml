@@ -7,7 +7,7 @@
     - name: Pulling Image from Docker Hub 
       shell: |
             docker pull suryansh1234/my-repo:simple-node-app
-            docker run --name nodea-app -p 3000:3000 -d suryansh1234/my-repo:simple-node-ap
+            docker run --name node-app -p 3000:3000 -d suryansh1234/my-repo:simple-node-app
     # - name: NPM Install
     #   shell: |
     #         cd /home/ec2-user/simple-node-app
