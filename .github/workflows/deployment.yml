@@ -23,7 +23,7 @@ jobs:
       run: |
            cd ./simple-node-app
            docker build -t simple-node-app .
-           docker tag simple-node-app:latest suryansh1234/simple-node-app:latest
+           docker tag simple-node-app:latest suryansh1234/my-repo:simple-node-app
            docker push suryansh1234/my-repo:simple-node-app
     # - name: Set up SSH key
     #   run: |
