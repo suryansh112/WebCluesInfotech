@@ -7,15 +7,6 @@ module "ec2"{
     type = var.type
     ec2_security_group = module.sg_group.sg_name
 }
-/*module "ansible"{
-    source = "./ansible"
-    role = var.role
-    region = var.region
-    key = var.key
-    ami = var.ami
-    type = var.type
-    ec2_security_group = module.sg_group.sg_name
-}*/
 module "sg_group"{
     source = "./sg"
     name = "web-instance-security-group"

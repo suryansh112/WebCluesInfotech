@@ -1,9 +1,8 @@
 terraform{
 backend "s3"{
-    bucket = "suryanshredshiftbucket"
-    key = "backend-webinfotech.tf"
+    bucket = "*"
+    key = "*"
     region = "us-east-1"
     
-
 }
 }

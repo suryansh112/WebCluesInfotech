@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment 
 metadata:
-  name: nodeapp
+  name: nginx
   labels:
     app: frontend
 spec:
@@ -11,29 +11,29 @@ spec:
       app: frontend
   template:
     metadata:
-      name: nodepod
+      name: nginx-pod
       labels:
         app: frontend
     spec:
-    containers:
-    - name: nginx
-      image: latest
-      ports:
-      -  containerPort: 80
-      livenessProbe:
-        tcpSocket:
-          port: 80
-        initialDelaySeconds: 15
-        periodSeconds: 20
-      readinessProbe:
-        tcpSocket:
-          port: 80
-        initialDelaySeconds: 15
-        periodSeconds: 20
-      resources:
-        limits:
-          cpu: 10m
-          memory: 1Gi
-        requests:
-          cpu: 10m
-          memory: 1Gi
+      containers:
+      - name: nginx-container
+        image: nginx:latest
+        ports:
+        -  containerPort: 80
+        livenessProbe:
+          tcpSocket:
+            port: 80
+          initialDelaySeconds: 15
+          periodSeconds: 20
+        readinessProbe:
+          tcpSocket:
+            port: 80
+          initialDelaySeconds: 15
+          periodSeconds: 20
+        resources:
+          limits:
+            cpu: 10m
+            memory: 1Gi
+          requests:
+            cpu: 10m
+            memory: 1Gi
