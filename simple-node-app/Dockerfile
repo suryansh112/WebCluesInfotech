@@ -1,14 +1,12 @@
-FROM node:latest
+FROM node:18-alpine
 
 WORKDIR /home/node/app
 
 COPY . /home/node/app
 
-RUN npm express
+RUN npm install express
 
-RUN npm install
-
-EXPOSE 6000
+EXPOSE 3000
 
 CMD ["node","app.js"]
 
